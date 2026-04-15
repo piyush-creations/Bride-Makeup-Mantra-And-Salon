@@ -54,7 +54,11 @@ router.post("/logout", (req, res) => {
     console.log("⚠️ Logout attempted without token");
   }
 
-  res.clearCookie("token");
+  res.clearCookie("token", token, {
+    httpOnly: true,
+    sameSite: "None",
+    secure: true,
+  });
   res.json({ success: true });
 });
 
