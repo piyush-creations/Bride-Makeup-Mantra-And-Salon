@@ -30,7 +30,8 @@ router.post("/login", async (req, res) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: "None",
+    secure: true,
   });
 
   console.log(`✅ User logged in: ${email} at ${new Date().toLocaleString()}`);
