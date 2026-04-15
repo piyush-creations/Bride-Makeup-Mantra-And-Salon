@@ -17,6 +17,7 @@ const AdminAuth = () => {
 
   // Check login status on load
   useEffect(() => {
+    if (!API) return ;
     axios
       .get(`${API}/api/admin/check`, { withCredentials: true })
       .then((res) => {
@@ -26,7 +27,7 @@ const AdminAuth = () => {
         }
       })
       .catch(() => setIsLoggedIn(false));
-  }, []);
+  }, [API, navigate]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
