@@ -9,10 +9,10 @@ import Portfolio from './components/Portfolio/Portfolio';
 import About from './components/About/About';
 import Enquiry from './components/EnquiryPage/Enquiry';
 import Footer from './components/Footer/Footer';
-import Services_2 from './components/Services_2/Services_2';
+import Services_2 from './components/Services2/Services2';
 import Testimonials from "./components/Testimonials/Testimonials";
-import About_2 from "./components/About_2/About_2";
-import Portfolio_2 from "./components/Portfolio_2/Portfolio_2";
+import About_2 from "./components/About2/About2";
+import Portfolio_2 from "./components/Portfolio2/Portfolio2";
 import AdminAuth from "./components/AdminAuth/AdminAuth";
 import  Dashboard from "./components/Dashboard/Dashboard";
 
