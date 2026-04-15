@@ -13,7 +13,7 @@ const AdminAuth = () => {
   const navigate = useNavigate();
 
   // 🔥 IMPORTANT: base URL (backend)
-  const API = "http://localhost:5000";
+  const API = process.env.REACT_APP_API_URL;
 
   // Check login status on load
   useEffect(() => {
