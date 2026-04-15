@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./Portfolio_2.scss";
+import "./Portfolio2.scss";
 
 const categories = ["All", "Hair", "Makeup", "Bridal"];
 

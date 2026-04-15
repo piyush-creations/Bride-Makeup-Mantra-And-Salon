@@ -1,4 +1,4 @@
-import "./About_2.scss";
+import "./About2.scss";
 
 const values = [
   { icon: "💎", title: "Expert Professionals", desc: "Certified beauty artists with years of hands-on craft and passion for perfection." },

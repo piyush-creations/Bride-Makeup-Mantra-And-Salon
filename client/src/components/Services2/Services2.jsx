@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Services_2.scss";
+import "./Services2.scss";
 
 const servicesData = [
   { title: "Hair Styling", category: "Hair", desc: "Professional styling & cuts." },
