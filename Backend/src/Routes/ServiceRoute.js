@@ -1,5 +1,5 @@
 import express from "express";
-import verifyAdmin from "../Middlewares/VerifyAdmin.js";
+import verifyAdmin from "../Middlewares/verifyAdmin.js";
 
 const router = express.Router();
 
