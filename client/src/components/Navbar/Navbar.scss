@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+$cream:       #f7f0ea;
+$brown:       #c58b6d;
+$brown-dark:  #a56f55;
+$ink:         #1e1a17;
+$muted:       #6b5c52;
+$border:      rgba(#c58b6d, 0.2);
+$danger:      #e63946;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 5vw, 60px);
+  height: 72px;
+  background: rgba($cream, 0.97);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid $border;
+  font-family: 'DM Sans', sans-serif;
+
+  // ── Logo ──────────────────────────────────────────────
+  &__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+
+    img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  // ── Desktop Nav Links (centered) ──────────────────────
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    li a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: $muted;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.25s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: $brown;
+        transition: width 0.3s ease;
+      }
+
+      &:hover,
+      &.active {
+        color: $ink;
+        &::after { width: 100%; }
+      }
+    }
+  }
+
+  // ── Right Side Actions ────────────────────────────────
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  // ── Book Now CTA ──────────────────────────────────────
+  &__cta {
+    display: inline-block;
+    padding: 9px 22px;
+    background: $ink;
+    color: $cream;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.2s ease;
+
+    &:hover {
+      background: $brown;
+      transform: translateY(-1px);
+    }
+
+    &:active { transform: translateY(0); }
+
+    &--mobile {
+      display: block;
+      margin: 24px 28px 0;
+      text-align: center;
+    }
+  }
+
+  // ── Admin wrapper — hides on mobile ───────────────────
+  &__admin-wrap {
+    display: flex;
+    align-items: center;
+
+    // ✅ Hidden on mobile — admin access is desktop-only
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  // ── Admin / Logout Button ──────────────────────────────
+  &__admin-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid rgba($brown, 0.5);
+    background: transparent;
+    color: $muted;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s, color 0.25s, transform 0.2s;
+
+    &:hover {
+      border-color: $brown;
+      background: rgba($brown, 0.08);
+      color: $ink;
+      transform: translateY(-1px);
+    }
+
+    &:active { transform: translateY(0); }
+
+    // Logout variant
+    &--logout {
+      border-color: rgba($danger, 0.4);
+      color: $danger;
+
+      &:hover {
+        border-color: $danger;
+        background: rgba($danger, 0.07);
+        color: darken($danger, 8%);
+      }
+    }
+  }
+
+  // ── Hamburger ─────────────────────────────────────────
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1100;
+
+    span {
+      display: block;
+      height: 1.5px;
+      background: $ink;
+      border-radius: 2px;
+      transform-origin: center;
+      transition: transform 0.3s ease, opacity 0.25s ease;
+    }
+
+    &--open {
+      span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+      span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    }
+  }
+
+  // ── Responsive ────────────────────────────────────────
+  @media (max-width: 768px) {
+    height: 64px;
+
+    &__links,
+    &__actions { display: none; }
+
+    &__hamburger { display: flex; }
+  }
+}
+
+// ── Mobile Drawer ──────────────────────────────────────
+// Rendered outside <nav>, so lives at root level
+.navbar__drawer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(300px, 80vw);
+  background: $cream;
+  border-left: 1px solid $border;
+  padding: 96px 0 40px;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1050;
+
+  &--open { transform: translateX(0); }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      border-bottom: 1px solid rgba($border, 0.6);
+
+      a {
+        display: block;
+        padding: 15px 28px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: $muted;
+        text-decoration: none;
+        transition: color 0.2s ease, padding-left 0.2s ease;
+
+        &:hover,
+        &.active {
+          color: $brown;
+          padding-left: 36px;
+        }
+      }
+    }
+  }
+
+  // No admin button here — intentionally omitted
+}
+
+// ── Overlay ────────────────────────────────────────────
+.navbar__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba($ink, 0.3);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  z-index: 1040;
+}

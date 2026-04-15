@@ -1,0 +1,68 @@
+.admin-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6efe9;
+
+  .login-card,
+  .logout-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+
+        &:focus {
+          border-color: #d4a373;
+        }
+      }
+
+      button {
+        padding: 12px;
+        background: #d4a373;
+        border: none;
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background: #c38e5f;
+        }
+      }
+    }
+
+    button {
+      padding: 12px 20px;
+      background: #e63946;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #d62828;
+      }
+    }
+  }
+}

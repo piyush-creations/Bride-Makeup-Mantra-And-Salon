@@ -1,0 +1,100 @@
+.services {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(50px, 8vw, 90px) 8%;
+  background: #efe7df;
+  text-align: center;
+
+  .card {
+    max-width: 260px;
+    cursor: pointer;
+    position: relative;
+
+    /* 🔥 INITIAL ANIMATION STATE */
+    opacity: 0;
+    transform: translateY(20px);
+
+    /* 🔥 SMOOTH TRANSITION */
+    transition: all 0.35s ease;
+
+    /* 🔥 FADE-IN ANIMATION */
+    animation: fadeUp 1s ease forwards;
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #1e1a17;
+      transition: color 0.3s ease;
+    }
+
+    p {
+      color: #6b5c52;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 🔥 UNDERLINE EFFECT */
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 0%;
+      height: 2px;
+      background: #c58b6d;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    /* 🔥 HOVER EFFECT */
+    &:hover {
+      transform: translateY(-6px);
+
+      h3 {
+        color: #c58b6d;
+      }
+
+      &::after {
+        width: 40%;
+      }
+    }
+
+    /* 🔥 CLICK EFFECT */
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  /* 🔥 STAGGERED ANIMATION */
+  .card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .card:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+
+  .card:nth-child(3) {
+    animation-delay: 0.5s;
+  }
+
+  /* 📱 Tablet */
+  @media (max-width: 900px) {
+    gap: 40px;
+  }
+
+  /* 📱 Mobile */
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+/* 🔥 KEYFRAMES */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

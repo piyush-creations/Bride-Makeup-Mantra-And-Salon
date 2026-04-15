@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+// ── Variables ──────────────────────────────────────────
+$cream:      #f7f0ea;
+$brown:      #c58b6d;
+$brown-dark: #a56f55;
+$ink:        #1e1a17;
+$muted:      #6b5c52;
+$border:     #e0d5cc;
+$white:      #ffffff;
+
+// ── Layout ────────────────────────────────────────────
+.enquiry {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+
+  // ── Left Panel ────────────────────────────────────
+  &__left {
+    position: relative;
+    flex: 0 0 38%;
+    background: $ink;
+    padding: clamp(48px, 7vw, 80px) clamp(32px, 5vw, 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: $white;
+  }
+
+  &__left-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: $brown;
+    margin-bottom: 20px;
+
+    &::before {
+      content: "── ";
+      color: $brown;
+    }
+  }
+
+  &__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.2;
+    color: $white;
+    margin-bottom: 16px;
+
+    em {
+      font-style: italic;
+      color: $brown;
+    }
+  }
+
+  &__sub {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba($white, 0.55);
+    margin-bottom: 40px;
+    font-weight: 300;
+    max-width: 320px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+
+  &__info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    strong {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba($white, 0.4);
+      margin-bottom: 2px;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 14px;
+      color: rgba($white, 0.85);
+      font-weight: 300;
+    }
+  }
+
+  &__info-icon {
+    color: $brown;
+    font-size: 12px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba($white, 0.3);
+  }
+
+  &__social-link {
+    color: rgba($white, 0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover { color: $brown; }
+  }
+
+  // ── Decorative circles ────────────────────────────
+  &__deco {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &__deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba($brown, 0.15);
+
+    &--1 {
+      width: 320px;
+      height: 320px;
+      bottom: -80px;
+      right: -100px;
+    }
+
+    &--2 {
+      width: 180px;
+      height: 180px;
+      bottom: -20px;
+      right: -30px;
+      border-color: rgba($brown, 0.08);
+      background: rgba($brown, 0.04);
+    }
+  }
+
+  // ── Right Panel ───────────────────────────────────
+  &__right {
+    flex: 1;
+    background: $cream;
+    padding: clamp(48px, 7vw, 80px) clamp(28px, 6vw, 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ── Form ──────────────────────────────────────────
+  &__form {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  &__form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: $ink;
+    margin-bottom: 32px;
+    letter-spacing: -0.3px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+
+    label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: $muted;
+
+      span { color: $brown; }
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: $white;
+      border: 1px solid $border;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: $ink;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+
+      &::placeholder { color: rgba($muted, 0.5); }
+
+      &:focus {
+        border-color: $brown;
+        box-shadow: 0 0 0 3px rgba($brown, 0.1);
+      }
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c58b6d' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.6;
+    }
+
+    input[type="date"] {
+      color: $muted;
+      cursor: pointer;
+    }
+  }
+
+  // ── Submit Button ─────────────────────────────────
+  &__btn {
+    margin-top: 8px;
+    width: 100%;
+    padding: 15px;
+    background: $ink;
+    color: $cream;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+
+    &:hover {
+      background: $brown;
+      transform: translateY(-2px);
+    }
+
+    &:active { transform: translateY(0); }
+  }
+
+  // ── Success State ─────────────────────────────────
+  &__success {
+    text-align: center;
+    max-width: 400px;
+
+    &-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba($brown, 0.12);
+      color: $brown;
+      font-size: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: $ink;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 15px;
+      color: $muted;
+      line-height: 1.7;
+      margin-bottom: 28px;
+
+      strong { color: $ink; }
+    }
+
+    .enquiry__btn { width: auto; padding: 13px 36px; }
+  }
+
+  // ── Responsive ────────────────────────────────────
+  @media (max-width: 900px) {
+    flex-direction: column;
+    min-height: auto;
+
+    &__left {
+      flex: none;
+      padding: clamp(40px, 6vw, 60px) clamp(24px, 5vw, 48px);
+    }
+
+    &__sub { max-width: 100%; }
+
+    &__right {
+      padding: 40px clamp(20px, 5vw, 48px) 60px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    &__row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    &__form-title { font-size: 24px; }
+
+    &__heading { font-size: 28px; }
+  }
+}

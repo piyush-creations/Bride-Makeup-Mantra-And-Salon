@@ -1,0 +1,206 @@
+.portfolio {
+  background: #ede5dc;
+  padding: clamp(60px, 8vw, 100px) 0 clamp(70px, 9vw, 110px);
+  overflow: hidden;
+
+  // ── Header ───────────────────────────────────
+  .portfolio-header {
+    text-align: center;
+    padding: 0 6%;
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #b07a5c;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 500;
+    color: #1e1a17;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    font-size: 14px;
+    color: #9a8a7e;
+    letter-spacing: 0.2px;
+  }
+
+  // ── Swiper ────────────────────────────────────
+  .portfolio-swiper {
+    padding: 0 6% 52px !important;
+
+    // Pagination dots
+    .swiper-pagination {
+      bottom: 12px;
+    }
+
+    .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+      background: #c4a992;
+      opacity: 0.4;
+      transition: all 0.3s;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      width: 20px;
+      border-radius: 3px;
+    }
+  }
+
+  // ── Card ──────────────────────────────────────
+  .card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #d4c5b8;
+
+    &:hover .card-img {
+      transform: scale(1.06);
+    }
+
+    &:hover .overlay {
+      opacity: 1;
+    }
+  }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 3 / 4;   // ← Portrait ratio
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .card-num {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+  }
+
+  // ── Hover Overlay ─────────────────────────────
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10, 6, 3, 0.72) 0%,
+      rgba(10, 6, 3, 0.08) 55%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 22px 18px;
+  }
+
+  .overlay-brand {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 5px;
+  }
+
+  .overlay-title {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  // ── CTA Row ───────────────────────────────────
+  .cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 6%;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 13px 32px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: #1e1a17;
+    color: #fff;
+    border: none;
+
+    &:hover {
+      background: #3a3028;
+    }
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #1e1a17;
+    border: 1.5px solid #c4a992;
+
+    &:hover {
+      background: #c4a992;
+    }
+  }
+
+  // ── Responsive ────────────────────────────────
+  @media (max-width: 768px) {
+    .portfolio-swiper {
+      padding: 0 5% 48px !important;
+    }
+
+    .overlay {
+      opacity: 1; // Always show overlay on touch devices
+    }
+  }
+
+  @media (max-width: 480px) {
+    .portfolio-header {
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .cta-row {
+      flex-direction: column;
+    }
+  }
+}
