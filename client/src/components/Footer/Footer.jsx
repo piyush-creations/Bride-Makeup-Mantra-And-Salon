@@ -57,14 +57,14 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div className="footer-col">
+        {/* <div className="footer-col">
           <h4 className="col-title">Quick Links</h4>
           <ul className="link-list">
             {["Home", "Services", "Portfolio", "About", "Book Now"].map((item) => (
               <li key={item}><a href="#">{item}</a></li>
             ))}
           </ul>
-        </div>
+        </div> */}
 
         {/* Contact */}
         <div className="footer-col">
