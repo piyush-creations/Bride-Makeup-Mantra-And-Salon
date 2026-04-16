@@ -12,7 +12,7 @@ const Portfolio = () => {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/portfolio");
+        const res = await axios.get("https://bride-makeup-mantra-and-salon.onrender.com/api/portfolio");
         setPortfolioData(res.data);
       } catch (err) {
         console.error("Error fetching portfolio", err);

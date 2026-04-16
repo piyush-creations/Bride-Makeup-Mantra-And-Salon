@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Testimonial.scss";
 
-const API_URL = "http://localhost:5000/api/testimonials";
+const API_URL = "https://bride-makeup-mantra-and-salon.onrender.com/api/testimonials";
 
 const services = [
   "Bridal Makeup",
