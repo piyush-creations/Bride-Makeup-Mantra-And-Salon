@@ -57,7 +57,7 @@ const Portfolio = () => {
             
             {/* 🔥 IMPORTANT: full URL */}
             <img
-              src={`http://localhost:5000${item.image}`}
+              src={`https://bride-makeup-mantra-and-salon.onrender.com${item.image}`}
               alt={item.category}
             />
 
