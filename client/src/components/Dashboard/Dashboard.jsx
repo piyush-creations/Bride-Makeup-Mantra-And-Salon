@@ -80,7 +80,7 @@ const Dashboard = () => {
   const fetchEnquiries = async () => {
     try {
       setEnquiryLoading(true);
-      const res = await axios.get("http://localhost:5000/api/enquiries", { withCredentials: true });
+      const res = await axios.get("https://bride-makeup-mantra-and-salon.onrender.com/api/enquiries", { withCredentials: true });
       setEnquiries(res.data);
     } catch {
       setEnquiries(DEMO_ENQUIRIES); // fallback for dev
@@ -91,7 +91,7 @@ const Dashboard = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      await axios.patch(`http://localhost:5000/api/enquiries/${id}`, { status }, { withCredentials: true });
+      await axios.patch(`https://bride-makeup-mantra-and-salon.onrender.com/api/enquiries/${id}`, { status }, { withCredentials: true });
     } catch { /* optimistic update only in dev */ }
     setEnquiries((prev) => prev.map((e) => (e._id === id ? { ...e, status } : e)));
     setSelectedEnquiry((e) => e?._id === id ? { ...e, status } : e);
@@ -100,7 +100,7 @@ const Dashboard = () => {
   const deleteEnquiry = async (id) => {
     if (!window.confirm("Delete this enquiry?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/enquiries/${id}`, { withCredentials: true });
+      await axios.delete(`https://bride-makeup-mantra-and-salon.onrender.com/api/enquiries/${id}`, { withCredentials: true });
     } catch { /* optimistic */ }
     setEnquiries((prev) => prev.filter((e) => e._id !== id));
     if (selectedEnquiry?._id === id) setSelectedEnquiry(null);
@@ -157,7 +157,7 @@ const Dashboard = () => {
       const fd = new FormData();
       fd.append("image", new File([croppedImageBlob], "image.jpg", { type: "image/jpeg" }));
       fd.append("category", category);
-      await axios.post("http://localhost:5000/api/portfolio", fd, { withCredentials: true });
+      await axios.post("https://bride-makeup-mantra-and-salon.onrender.com/api/portfolio", fd, { withCredentials: true });
       alert("Portfolio Added ✅");
       setPortfolioData({ category: "", customCategory: "" });
       setCroppedImageBlob(null); setImageSrc(null); setFileName(""); setFileSize("");
@@ -167,7 +167,7 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/admin/logout", {}, { withCredentials: true });
+      await axios.post("https://bride-makeup-mantra-and-salon.onrender.com/api/admin/logout", {}, { withCredentials: true });
       alert("Logged out successfully!");
       navigate("/");
     } catch (err) {
