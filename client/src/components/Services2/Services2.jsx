@@ -62,7 +62,6 @@ const Services = () => {
           <div className="service-card" key={index}>
             <h3>{service.title}</h3>
             <p>{service.desc}</p>
-            <button>Book Now</button>
           </div>
         ))}
       </div>
