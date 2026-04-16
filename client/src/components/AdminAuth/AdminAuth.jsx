@@ -62,7 +62,7 @@ const AdminAuth = () => {
         { withCredentials: true }
       );
       setIsLoggedIn(false);
-      navigate("/admin/login"); // 🔥 redirect after logout
+      navigate("/"); // 🔥 redirect after logout
     } catch (err) {
       console.log(err);
     }
