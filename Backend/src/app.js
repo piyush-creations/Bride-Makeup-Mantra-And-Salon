@@ -17,7 +17,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 app.use(cors({
-  origin: "https://bride-makeup-mantra-and-salon.vercel.app",
+  origin: "https://bridesmakeupmnatra.vercel.app",
   credentials: true
 }));
 
