@@ -54,10 +54,10 @@ const Portfolio = () => {
       <div className="portfolio-container">
         {filtered.map((item, index) => (
           <div className="portfolio-card" key={index}>
-            
+
             {/* 🔥 IMPORTANT: full URL */}
             <img
-              src={`https://bride-makeup-mantra-and-salon.onrender.com${item.image}`}
+              src={item.image}
               alt={item.category}
             />
 

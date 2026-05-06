@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cropper from "react-easy-crop";
+import { uploadImage } from "../../Utils/UploadImage";
 import "./Dashboard.scss";
 
 const CATEGORIES = ["Hair", "Makeup", "Bridal", "Skincare", "Editorial", "Other"];
@@ -147,23 +148,75 @@ const Dashboard = () => {
 
   const handleReset = () => { setImageSrc(null); setCroppedImageBlob(null); setFileName(""); setFileSize(""); setZoom(1); };
 
-  const addPortfolio = async (e) => {
-    e.preventDefault();
-    if (!croppedImageBlob) { alert("Please crop the image first"); return; }
-    const category = portfolioData.customCategory || portfolioData.category;
-    if (!category) { alert("Please select or enter a category"); return; }
-    try {
-      setUploading(true);
-      const fd = new FormData();
-      fd.append("image", new File([croppedImageBlob], "image.jpg", { type: "image/jpeg" }));
-      fd.append("category", category);
-      await axios.post("https://bride-makeup-mantra-and-salon.onrender.com/api/portfolio", fd, { withCredentials: true });
-      alert("Portfolio Added ✅");
-      setPortfolioData({ category: "", customCategory: "" });
-      setCroppedImageBlob(null); setImageSrc(null); setFileName(""); setFileSize("");
-    } catch (err) { console.error(err); alert("Upload failed"); }
-    finally { setUploading(false); }
-  };
+ const addPortfolio = async (e) => {
+  e.preventDefault();
+
+  if (!croppedImageBlob) {
+    alert("Please crop the image first");
+    return;
+  }
+
+  const category =
+    portfolioData.customCategory ||
+    portfolioData.category;
+
+  if (!category) {
+    alert("Please select or enter a category");
+    return;
+  }
+
+  try {
+
+    setUploading(true);
+
+    // 🔥 create file from cropped blob
+    const file = new File(
+      [croppedImageBlob],
+      "image.jpg",
+      {
+        type: "image/jpeg",
+      }
+    );
+
+    // 🔥 upload to firebase
+    const imageUrl = await uploadImage(file);
+
+    // 🔥 send URL to backend
+    await axios.post(
+      "https://bride-makeup-mantra-and-salon.onrender.com/api/portfolio",
+      {
+        image: imageUrl,
+        category,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+
+    alert("Portfolio Added ✅");
+
+    // reset
+    setPortfolioData({
+      category: "",
+      customCategory: "",
+    });
+
+    setCroppedImageBlob(null);
+    setImageSrc(null);
+    setFileName("");
+    setFileSize("");
+
+  } catch (err) {
+
+    console.error(err);
+    alert("Upload failed");
+
+  } finally {
+
+    setUploading(false);
+
+  }
+};
 
   const handleLogout = async () => {
     try {
