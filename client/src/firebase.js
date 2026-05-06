@@ -7,7 +7,7 @@ const firebaseConfig = {
   projectId: "bmmas-522ed",
 
   // ✅ IMPORTANT FIX
-  storageBucket: "bmmas-522ed.appspot.com",
+storageBucket: "bmmas-522ed.firebasestorage.app",
 
   messagingSenderId: "1043312555484",
   appId: "1:1043312555484:web:aeebfb464558241f3d8b19",
