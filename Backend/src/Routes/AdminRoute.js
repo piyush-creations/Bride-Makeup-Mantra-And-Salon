@@ -7,7 +7,7 @@ const router = express.Router();
 // Hardcoded admin
 const ADMIN = {
   email: "ashakeshri242@gmail.com",
-  password: bcrypt.hashSync("Asha@123", 10),
+  password: bcrypt.hashSync("Secure@24", 10),
 };
 
 // LOGIN

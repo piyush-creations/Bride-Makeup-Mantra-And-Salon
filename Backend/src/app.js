@@ -22,10 +22,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(cookieParser());
-
-// 🔥 SERVE IMAGES (IMPORTANT)
-app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+app.use(cookieParser());  
 
 // Test route
 app.get("/", (req, res) => {
